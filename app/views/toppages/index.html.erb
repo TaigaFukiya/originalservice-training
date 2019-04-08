@@ -1,15 +1,11 @@
-<% content_for :cover do %>
-    <div class="cover">
-        <div class="cover-inner">
-            <divclass="cover-contents">
-                <h1>さあ、筋トレをはじめよう！</h1>
-                <button type="button" class="btn btn-default">
-                    <span class="glyphicon glyphicon-heart"></span>
-                    トレーニング開始
-                </button>
-            </divclass>
-        </div>
+<div class="center jumbotron">
+    <div class="text-center">
+        <h1>筋トレをはじめよう！</h1>
+            <% unless logged_in? %>
+                <%= link_to 'トレーニング開始', signup_path, class: "btn btn-default glyphicon glyphicon-heart" %>
+            <% end %>
     </div>
-<% end %>
-
-<P>テスト</P>
+</div>
+<div class="text-right">
+    <h5>すでに登録されている方は<%= link_to 'こちら', login_path %></h5>
+</div>
