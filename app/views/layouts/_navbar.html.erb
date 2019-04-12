@@ -15,8 +15,7 @@
         <% if logged_in? %>
         <li>
           <a href="#">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-            メニューの追加
+            <span class="glyphicon glyphicon-plus" aria-hidden="true", <%= link_to 'メニューの追加', root_path(current_user) %></span>
           </a>
         </li>
         

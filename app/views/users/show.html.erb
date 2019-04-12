@@ -5,4 +5,25 @@
   <div class="name text-center">
     <h1><%= @user.name %></h1>
   </div>
+  <table class="table">
+    <tr>
+      <th>出身地</th>
+      <th>年齢</th>
+      <th>性別</th>
+    </tr>
+    <tr>
+      <td>&nbsp;<%= @user.address %></td>
+      <td><% if @user.age.present? %> &nbsp;<%= @user.age %>代 <% end %></td>
+      <td>&nbsp;<%= @user.sex %></td>
+    </tr>
+  </table>
+  <table class="table">
+    <tr>
+      <th>自己紹介</th>
+    </tr>
+    <tr>
+      <td><%= @user.introduce %></td>
+    </tr>
+  </table>
+  <%= link_to "プロフィールの編集", edit_user_path(@user) %>
 </div>
