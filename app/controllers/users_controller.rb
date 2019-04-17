@@ -1,8 +1,14 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:show]
+  before_action :require_user_logged_in, only: [:index, :show, :followings, :followers, :edit, :update]
+  
+  def index
+    @users = User.all.page(params[:page])
+  end
   
   def show
     @user = User.find(params[:id])
+    @menus = @user.menus.order('created_at DESC').page(params[:page])
+    counts(@user)
   end
 
   def new
@@ -42,10 +48,22 @@ class UsersController < ApplicationController
       redirect_to root_url
     end
   end
+  
+  def followings
+    @user = User.find(params[:id])
+    @followings = @user.followings.page(params[:page])
+    counts(@user)
+  end
+  
+  def followers
+    @user = User.find(params[:id])
+    @followers = @user.followers.page(params[:page])
+    counts(@user)
+  end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :introduce, :age, :sex, :address)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :introduce, :age, :sex, :address, :target)
   end
 end

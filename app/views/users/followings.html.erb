@@ -7,7 +7,6 @@
   </div>
   <h2>今月の目標</h2>
     <h3><%= @user.target %></h3>
-    
   <h2>プロフィール</h2>
   <table class="table">
     <tr>
@@ -34,5 +33,11 @@
   <h2>本日のメニュー</h2>
   <div>
     <%= render "menus/menus", menus: @menus %>
+  </div>
+  <div>
+    <ul>
+      <li class="<%= 'active' if current_page?(followings_user_path(@user)) %>"><%= link_to followings_user_path(@user) do %>フォロー中 <span class="badge"><%= @count_followings %></span><% end %></li>
+      <li class="<%= 'active' if current_page?(followers_user_path(@user)) %>"><%= link_to followers_user_path(@user) do %>フォロワ― <span class="badge"><%= @count_followers %></span><% end %></li>
+    </ul>
   </div>
 </div>
