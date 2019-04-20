@@ -12,6 +12,7 @@
                     <div>
                         <p><%= link_to "詳細ページ", user %></p>
                     </div>
+                    <%= render 'relationships/follow_button', user: user %>
                 </div>
             </li>
         <% end %>

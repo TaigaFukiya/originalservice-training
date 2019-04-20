@@ -29,8 +29,9 @@
       <td><%= @user.introduce %></td>
     </tr>
   </table>
-  <%= link_to "目標・プロフィールの編集", edit_user_path(@user) %>
-  
+  <% if current_user == @user %>
+    <%= link_to "目標・プロフィールの編集", edit_user_path(@user) %>
+  <% end %>
   <h2>本日のメニュー</h2>
   <div>
     <%= render "menus/menus", menus: @menus %>
